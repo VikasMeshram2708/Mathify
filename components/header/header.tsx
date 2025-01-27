@@ -5,13 +5,16 @@ import googleImg from "@/public/header/image.png";
 import Image from "next/image";
 import { Badge } from "../ui/badge";
 import { ModeToggle } from "../mode-toggle";
+import { SparklesText } from "../ui/sparkles-text";
 
 export default function Header() {
   return (
     <header className="border-b shadow-md">
       <div className="container mx-auto p-4 flex items-center justify-between">
-        <h1 className="text-lg md:text-2xl relative w-[10.5rem] lg:text-3xl xl:text-4xl font-bold">
-          <Link href="/">Mathify</Link>
+        <h1 className="relative w-64">
+          <Link href="/">
+            <SparklesText text="Mathify" />
+          </Link>
           <Badge className="text-sm absolute top-0 right-0 bg-gradient-to-r from-indigo-500 to-purple-600">
             AI
           </Badge>
