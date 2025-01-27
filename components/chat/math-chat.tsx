@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState, useRef } from "react";
 import {
   Card,
   CardContent,
@@ -11,28 +11,56 @@ import {
 } from "../ui/card";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
-import { mather } from "@/data-access/actions";
-// import ResponseBox from "./response-box";
 
 export default function MathChat() {
-  const [que, setQue] = useState<queType>();
-  // const [toggleDialog, setToggleDialog] = useState<dialogToggle>(false);
-  // const [showResponse, setShowResponse] = useState<responseToggle>(false);
+  const [input, setInput] = useState("");
+  const [response, setResponse] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const responseRef = useRef<string>("");
 
-  async function handleSubmit() {
-    // const res = await mather(que);
-    // console.log("res", res);
-    setQue("");
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setResponse("");
+    responseRef.current = "";
 
-  // function handleClose() {
-  //   setShowResponse(false);
-  //   setToggleDialog(false);
-  // }
+    try {
+      const res = await fetch("/api/mathify", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ question: input }),
+      });
+
+      if (!res.body) return;
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+
+      const processStream = async () => {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          
+          const chunk = decoder.decode(value);
+          responseRef.current += chunk;
+          setResponse(responseRef.current);
+        }
+        setIsLoading(false);
+      };
+
+      await processStream();
+    } catch (error) {
+      console.error("Error:", error);
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="w-full relative px-6 py-4">
       <Card className="container mt-10 mx-auto max-w-screen-2xl">
-        <CardHeader className="flex items-center ">
+        <CardHeader className="flex items-center">
           <CardTitle className="text-lg md:text-2xl lg:text-4xl font-bold">
             Math AI Assistant
           </CardTitle>
@@ -41,27 +69,35 @@ export default function MathChat() {
             and practice for tests.
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          <Textarea
-            value={que}
-            onChange={(e) => setQue(e.target.value)}
-            placeholder="Ask a math question"
-            rows={4}
-          />
-        </CardContent>
-        <CardFooter>
-          <Button onClick={handleSubmit} size="lg" className="font-bold">
-            Submit
-          </Button>
-        </CardFooter>
+
+        <form onSubmit={handleSubmit}>
+          <CardContent className="space-y-4">
+            <Textarea
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Ask a math question"
+              rows={4}
+              disabled={isLoading}
+            />
+            {response && (
+              <div className="p-4 bg-gray-100 rounded-lg">
+                <p className="text-sm whitespace-pre-wrap">{response}</p>
+              </div>
+            )}
+          </CardContent>
+
+          <CardFooter>
+            <Button
+              type="submit"
+              size="lg"
+              className="font-bold"
+              disabled={isLoading}
+            >
+              {isLoading ? "Processing..." : "Submit"}
+            </Button>
+          </CardFooter>
+        </form>
       </Card>
-      {/* {toggleDialog && (
-        <ResponseBox
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, beatae?"
-          showResponse={showResponse}
-          handleClose={handleClose}
-        />
-      )} */}
     </div>
   );
 }
