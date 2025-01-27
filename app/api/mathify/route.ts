@@ -20,6 +20,7 @@ export const POST = async (request: NextRequest) => {
     }
 
     const { question } = sanitize.data;
+    console.log('que', question);
 
     const response = await client.chat.completions.create({
       model: "nvidia/llama-3.1-nemotron-70b-instruct",
@@ -27,8 +28,6 @@ export const POST = async (request: NextRequest) => {
         { role: "system", content: mathifyContent },
         { role: "user", content: question }, // Fixed to use actual question
       ],
-      max_tokens: 256,
-      max_completion_tokens: 500,
       stream: true,
     });
 

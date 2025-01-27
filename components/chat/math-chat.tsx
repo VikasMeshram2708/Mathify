@@ -1,16 +1,21 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useState, useRef } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from "../ui/card";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
+import "katex/dist/katex.min.css";
 
 export default function MathChat() {
   const [input, setInput] = useState("");
@@ -42,7 +47,7 @@ export default function MathChat() {
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
-          
+
           const chunk = decoder.decode(value);
           responseRef.current += chunk;
           setResponse(responseRef.current);
@@ -58,13 +63,13 @@ export default function MathChat() {
   };
 
   return (
-    <div className="w-full relative px-6 py-4">
-      <Card className="container mt-10 mx-auto max-w-screen-2xl">
-        <CardHeader className="flex items-center">
-          <CardTitle className="text-lg md:text-2xl lg:text-4xl font-bold">
+    <div className="w-full px-6 py-4">
+      <Card className="container mx-auto mt-10 max-w-screen-2xl">
+        <CardHeader className="flex items-center text-center space-y-2">
+          <CardTitle className="text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl">
             Math AI Assistant
           </CardTitle>
-          <CardDescription className="text-base">
+          <CardDescription className="text-sm leading-relaxed text-muted-foreground md:text-base">
             Your AI Math Tutor. Get help with math problems, explore examples,
             and practice for tests.
           </CardDescription>
@@ -80,8 +85,23 @@ export default function MathChat() {
               disabled={isLoading}
             />
             {response && (
-              <div className="p-4 bg-gray-100 rounded-lg">
-                <p className="text-sm whitespace-pre-wrap">{response}</p>
+              <div className="p-4 rounded-lg bg-muted/50 prose prose-sm max-w-none">
+                <ReactMarkdown
+                  remarkPlugins={[remarkMath]}
+                  rehypePlugins={[rehypeKatex]}
+                  components={{
+                    // Add custom rendering for code blocks if needed
+                    code({ node, className, children, ...props }) {
+                      if (className?.includes("math")) {
+                        return <>{children}</>;
+                      }
+                      return <code {...props}>{children}</code>;
+                    },
+                  }}
+                  className="whitespace-pre-wrap"
+                >
+                  {response}
+                </ReactMarkdown>
               </div>
             )}
           </CardContent>
