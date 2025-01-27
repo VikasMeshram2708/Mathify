@@ -2,7 +2,7 @@ import React from "react";
 import { CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { TypewriterEffect } from "../ui/typewriter-effect";
 
-export default function Hero() {
+export default function MathHero() {
   const words = [
     {
       text: "Your",

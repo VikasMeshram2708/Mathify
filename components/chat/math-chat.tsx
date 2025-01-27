@@ -1,6 +1,6 @@
 import { Card } from "../ui/card";
 import "katex/dist/katex.min.css";
-import Hero from "../home/hero";
+import MathHero from "../home/math-hero";
 import MathChatBox from "./math-chat-box";
 
 export default function MathChat() {
@@ -8,7 +8,7 @@ export default function MathChat() {
     <div className="w-full px-6 py-4">
       <Card className="container mx-auto mt-10 max-w-screen-2xl">
         {/* Hero Section */}
-        <Hero />
+        <MathHero />
         {/* Chat Section */}
         <MathChatBox />
       </Card>

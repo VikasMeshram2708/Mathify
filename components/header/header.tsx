@@ -8,6 +8,7 @@ import { ModeToggle } from "../mode-toggle";
 import { SparklesText } from "../ui/sparkles-text";
 
 import MobileNav from "./mobile-nav";
+import LargeNav from "./large-nav";
 
 export default function Header() {
   return (
@@ -22,23 +23,28 @@ export default function Header() {
           </Badge>
         </h1>
 
-        {/* Mobile Nav */}
-        <MobileNav />
+        <section className="flex gap-8">
+          {/* Mobile Nav */}
+          <MobileNav />
 
-        <section className="hidden lg:flex items-center gap-4">
-          <Button type="button">
-            <span>
-              <Image
-                src={googleImg}
-                alt="Authentication with Google"
-                width={25}
-                height={25}
-                priority
-                className="bg-cover"
-              />
-            </span>
-            Sign in with Google
-          </Button>
+          {/* Large Nav */}
+          <LargeNav />
+
+          <section className="hidden lg:flex items-center gap-4">
+            <Button type="button">
+              <span>
+                <Image
+                  src={googleImg}
+                  alt="Authentication with Google"
+                  width={25}
+                  height={25}
+                  priority
+                  className="bg-cover"
+                />
+              </span>
+              Sign in with Google
+            </Button>
+          </section>
           <ModeToggle />
         </section>
       </div>

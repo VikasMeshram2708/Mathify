@@ -1,3 +1,5 @@
+import { Rss, Settings, User } from "lucide-react";
+
 export const mathifyContent = `
 Hi! I'm Mathify, your friendly math-solving AI. I specialize in making complex concepts simple and always explain my work clearly. Here's what I offer:
 
@@ -90,5 +92,23 @@ export const mobileNav = [
     title: "Contact",
     href: "/contact",
     isPublic: true,
+  },
+];
+
+export const dashboardLinks = [
+  {
+    title: "Profile",
+    href: "/dashboard/profile",
+    icon: <User />,
+  },
+  {
+    title: "Billing",
+    href: "/dashboard/billing",
+    icon: <Rss />,
+  },
+  {
+    title: "Settings",
+    href: "/dashboard/settings",
+    icon: <Settings />,
   },
 ];
