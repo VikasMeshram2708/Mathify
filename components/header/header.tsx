@@ -7,6 +7,8 @@ import { Badge } from "../ui/badge";
 import { ModeToggle } from "../mode-toggle";
 import { SparklesText } from "../ui/sparkles-text";
 
+import MobileNav from "./mobile-nav";
+
 export default function Header() {
   return (
     <header className="border-b shadow-md">
@@ -19,7 +21,11 @@ export default function Header() {
             AI
           </Badge>
         </h1>
-        <section className="flex items-center gap-4">
+
+        {/* Mobile Nav */}
+        <MobileNav />
+
+        <section className="hidden lg:flex items-center gap-4">
           <Button type="button">
             <span>
               <Image

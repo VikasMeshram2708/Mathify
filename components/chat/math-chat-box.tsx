@@ -5,8 +5,10 @@ import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Loader2, Trash2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import MathResonse from "./math-response";
+import MathAbortController from "./math-abort-controller";
+import MathClearChat from "./math-clear-chat";
 
 export default function MathChatBox() {
   const [input, setInput] = useState("");
@@ -113,12 +115,10 @@ export default function MathChatBox() {
                 "Submit"
               )}
             </Button>
-            {response && (
-              <>
-                <Button onClick={handleClear} variant={"destructive"}>
-                  <Trash2 />
-                </Button>
-              </>
+            {response && !isLoading ? (
+              <MathClearChat handleClear={handleClear} />
+            ) : (
+               response ? <MathAbortController /> :""
             )}
           </section>
 

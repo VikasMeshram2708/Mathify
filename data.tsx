@@ -47,8 +47,48 @@ _Me_:
 Let's solve some math mysteries together! ✨
 `;
 
-export const calculus = `What is the derivative of f(x)=3x3−5x2+2x−4f(x)=3x3−5x2+2x−4?`;
-export const Geometry = `Find the area of a triangle with a base of 10 cm and a height of 15 cm.`;
-export const Algebra = `Solve for xx in the equation 5x−7=185x−7=18`;
-export const Arithmetic = `What is 124×56124×56?`;
+export const largeNav = [
+  {
+    title: "Home",
+    href: "/",
+    isPublic: true,
+  },
+  {
+    title: "Chat",
+    href: "/chat",
+    isPublic: false,
+  },
+  {
+    title: "About",
+    href: "/about",
+    isPublic: true,
+  },
+];
 
+export const mobileNav = [
+  {
+    title: "Home",
+    href: "/",
+    isPublic: true,
+  },
+  {
+    title: "Chat",
+    href: "/mathify",
+    isPublic: false,
+  },
+  {
+    title: "About",
+    href: "/about",
+    isPublic: true,
+  },
+  {
+    title: "Privacy",
+    href: "/privacy",
+    isPublic: true,
+  },
+  {
+    title: "Contact",
+    href: "/contact",
+    isPublic: true,
+  },
+];
