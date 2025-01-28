@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/header/header";
 import { ThemeProvider } from "@/components/theme-provider";
 import AuthProvider from "./context/auth-provider";
+// import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({
   return (
     <AuthProvider>
       <html lang="en" suppressHydrationWarning>
+        {/* <Script src="https://www.google.com/recaptcha/api.js"></Script> */}
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
