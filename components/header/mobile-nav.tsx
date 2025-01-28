@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "../ui/button";
 import { LogOut, Menu } from "lucide-react";
 import Link from "next/link";
-import { mobileNav } from "@/data";
+import { navLinks } from "@/data";
 
 export default function MobileNav() {
   return (
@@ -32,7 +32,7 @@ export default function MobileNav() {
           </SheetTitle>
           <SheetDescription asChild className="bg-muted/30 rounded-xl flex flex-col items-start gap-4">
             <nav>
-              {mobileNav.map((item) => (
+              {navLinks.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}

@@ -1,17 +1,22 @@
-import { NextPage } from "next";
+import { Metadata, NextPage } from "next";
 import React from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  // BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
+export const metadata: Metadata = {
+  title: "About Mathify - Your Trusted AI Math Assistant",
+  description: "Learn more about Mathify, the AI math assistant designed to simplify your mathematical journey. Discover how we solve equations, explain concepts, and make math easy for everyone.",
+  keywords:["About Mathify, AI math assistant, math-solving AI, how Mathify works, AI math tutor, Mathify features, math learning assistant."]
+};
+
 const AboutPage: NextPage = () => {
   return (
-    <div className="w-full">
+    <div className="w-full min-h-screen">
       <div className="container max-w-screen-2xl mx-auto px-6 py-4">
         <Breadcrumb>
           <BreadcrumbList>
@@ -20,15 +25,13 @@ const AboutPage: NextPage = () => {
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink href="/chat">Mathify Chat</BreadcrumbLink>
+              <BreadcrumbLink href="/about">About</BreadcrumbLink>
             </BreadcrumbItem>
-            {/* <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-            </BreadcrumbItem> */}
           </BreadcrumbList>
         </Breadcrumb>
-        About
+        <div className="my-10 bg-muted/30">
+          <h1>About Page</h1>
+        </div>
       </div>
     </div>
   );

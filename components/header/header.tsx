@@ -1,16 +1,21 @@
 import Link from "next/link";
 import React from "react";
-import { Button } from "../ui/button";
-import googleImg from "@/public/header/image.png";
-import Image from "next/image";
 import { Badge } from "../ui/badge";
 import { ModeToggle } from "../mode-toggle";
 import { SparklesText } from "../ui/sparkles-text";
 
 import MobileNav from "./mobile-nav";
 import LargeNav from "./large-nav";
+import { ProfileDropDown, SignIn, SignUp } from "../auth-button";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
 
-export default function Header() {
+export default async function Header() {
+  const { isAuthenticated, getUser } = getKindeServerSession();
+  const session = await isAuthenticated();
+
+  const data: KindeUser = await getUser();
+
   return (
     <header className="border-b shadow-md">
       <div className="container mx-auto p-4 flex items-center justify-between">
@@ -31,19 +36,14 @@ export default function Header() {
           <LargeNav />
 
           <section className="hidden lg:flex items-center gap-4">
-            <Button type="button">
-              <span>
-                <Image
-                  src={googleImg}
-                  alt="Authentication with Google"
-                  width={25}
-                  height={25}
-                  priority
-                  className="bg-cover"
-                />
-              </span>
-              Sign in with Google
-            </Button>
+            {session ? (
+              <ProfileDropDown data={data} />
+            ) : (
+              <>
+                <SignIn />
+                <SignUp />
+              </>
+            )}
           </section>
           <ModeToggle />
         </section>

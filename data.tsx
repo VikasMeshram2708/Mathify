@@ -49,51 +49,29 @@ _Me_:
 Let's solve some math mysteries together! ✨
 `;
 
-export const largeNav = [
+export const navLinks = [
   {
     title: "Home",
     href: "/",
-    isPublic: true,
   },
   {
     title: "Chat",
     href: "/chat",
-    isPublic: false,
   },
   {
     title: "About",
     href: "/about",
-    isPublic: true,
-  },
-];
-
-export const mobileNav = [
-  {
-    title: "Home",
-    href: "/",
-    isPublic: true,
-  },
-  {
-    title: "Chat",
-    href: "/mathify",
-    isPublic: false,
-  },
-  {
-    title: "About",
-    href: "/about",
-    isPublic: true,
   },
   {
     title: "Privacy",
     href: "/privacy",
-    isPublic: true,
   },
   {
     title: "Contact",
     href: "/contact",
-    isPublic: true,
   },
 ];
+
 
 export const dashboardLinks = [
   {
