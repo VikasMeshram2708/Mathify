@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development next dev --turbopack",
-    "build": "NODE_ENV=development next build",
-    "start": "NODE_ENV=production next start",
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint",
     "seed": "tsx ./data-access/actions.ts",
     "generate": "prisma generate",
