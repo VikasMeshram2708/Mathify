@@ -1,10 +1,14 @@
-import { NextPage } from 'next'
-import React from 'react'
+import { NextPage } from "next";
+import React from "react";
 
-const BillingPage:NextPage = () => {
+const BillingPage: NextPage = () => {
   return (
-    <div>BillingPage</div>
-  )
-}
+    <div className="min-h-screen w-full flex flex-col items-center justify-center">
+      <h1 className="text-xl md:text-2xl lg:text-4xl font-bold">
+        Coming Sooon!
+      </h1>
+    </div>
+  );
+};
 
-export default BillingPage
+export default BillingPage;

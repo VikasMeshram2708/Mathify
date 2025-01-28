@@ -29,7 +29,7 @@ export default function HomeHero() {
         <header className="text-center mb-12">
           <TypewriterEffect words={words} />
           <p className="mt-4 text-base sm:text-lg leading-relaxed">
-            Master math concepts with ease. Mathify is your interactive,
+            Mathify is your interactive,
             personalized tutor for all things math.
           </p>
         </header>

@@ -72,6 +72,32 @@ export const navLinks = [
   },
 ];
 
+export const mobLinks = [
+  {
+    title: "Home",
+    href: "/",
+  },
+  {
+    title: "Chat",
+    href: "/chat",
+  },
+  {
+    title: "Dashboard",
+    href: "/dashboard",
+  },
+  {
+    title: "About",
+    href: "/about",
+  },
+  {
+    title: "Privacy",
+    href: "/privacy",
+  },
+  {
+    title: "Contact",
+    href: "/contact",
+  },
+];
 
 export const dashboardLinks = [
   {

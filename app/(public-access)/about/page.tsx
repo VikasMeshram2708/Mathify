@@ -7,11 +7,15 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import AboutCard from "./about-card";
 
 export const metadata: Metadata = {
   title: "About Mathify - Your Trusted AI Math Assistant",
-  description: "Learn more about Mathify, the AI math assistant designed to simplify your mathematical journey. Discover how we solve equations, explain concepts, and make math easy for everyone.",
-  keywords:["About Mathify, AI math assistant, math-solving AI, how Mathify works, AI math tutor, Mathify features, math learning assistant."]
+  description:
+    "Learn more about Mathify, the AI math assistant designed to simplify your mathematical journey. Discover how we solve equations, explain concepts, and make math easy for everyone.",
+  keywords: [
+    "About Mathify, AI math assistant, math-solving AI, how Mathify works, AI math tutor, Mathify features, math learning assistant.",
+  ],
 };
 
 const AboutPage: NextPage = () => {
@@ -29,8 +33,8 @@ const AboutPage: NextPage = () => {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <div className="my-10 bg-muted/30">
-          <h1>About Page</h1>
+        <div className="my-10">
+          <AboutCard />
         </div>
       </div>
     </div>

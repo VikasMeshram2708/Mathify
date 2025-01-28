@@ -9,12 +9,17 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { Button, buttonVariants } from "../ui/button";
-import { LogOut, Menu } from "lucide-react";
+import { buttonVariants } from "../ui/button";
+import { Menu } from "lucide-react";
 import Link from "next/link";
-import { navLinks } from "@/data";
+import { mobLinks } from "@/data";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { SignIn, SignOut, SignUp } from "../auth-button";
 
-export default function MobileNav() {
+export default async function MobileNav() {
+  const { isAuthenticated } = getKindeServerSession();
+  const session = await isAuthenticated();
+
   return (
     <Sheet>
       <SheetTrigger
@@ -30,9 +35,12 @@ export default function MobileNav() {
           <SheetTitle className="text-4xl font-bold text-center py-10">
             Mathify
           </SheetTitle>
-          <SheetDescription asChild className="bg-muted/30 rounded-xl flex flex-col items-start gap-4">
+          <SheetDescription
+            asChild
+            className="bg-muted/30 rounded-xl flex flex-col items-start gap-4"
+          >
             <nav>
-              {navLinks.map((item) => (
+              {mobLinks.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -48,12 +56,14 @@ export default function MobileNav() {
           </SheetDescription>
         </SheetHeader>
         <SheetFooter>
-          <Button className="w-full" variant={"destructive"}>
-            Sign out
-            <span>
-              <LogOut />
-            </span>
-          </Button>
+          {session ? (
+            <SignOut className="w-full" />
+          ) : (
+            <>
+              <SignIn />
+              <SignUp />
+            </>
+          )}
         </SheetFooter>
       </SheetContent>
     </Sheet>

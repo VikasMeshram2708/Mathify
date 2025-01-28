@@ -1,12 +1,10 @@
 import React from "react";
-import { OctagonX, Star } from "lucide-react";
+import {  Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -46,14 +44,7 @@ export default function UserCard({ data }: UserCardProps) {
           <p>300 Credits Left</p>
         </section>
       </CardContent>
-      <CardFooter>
-        <Button variant={"destructive"}>
-          <span>
-            <OctagonX />
-          </span>
-          <span>Delete Account</span>
-        </Button>
-      </CardFooter>
+      
     </Card>
   );
 }

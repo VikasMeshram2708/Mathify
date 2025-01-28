@@ -19,6 +19,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export function SignIn() {
   return (
@@ -67,9 +68,15 @@ export function ProfileDropDown({ data }: { data: KindeUser }) {
     </DropdownMenu>
   );
 }
-export function SignOut() {
+
+type SignOutProps = {
+  className?: string;
+};
+export function SignOut({ className }: SignOutProps) {
   return (
-    <LogoutLink className={buttonVariants({ variant: "destructive" })}>
+    <LogoutLink
+      className={cn(buttonVariants({ variant: "destructive" }), className)}
+    >
       <LogOut />
       Logout
     </LogoutLink>

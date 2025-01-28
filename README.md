@@ -1,9 +1,13 @@
 # Mathify
 
+* NextJS - [https://nextjs.org]
 
 * NEMO API - [https://build.nvidia.com/nvidia/llama-3_1-nemotron-70b-instruct?snippet_tab=Node]
 
+* Google Re-Captcha - [https://www.google.com/recaptcha/about]
 
-### Futures Updates
+* Kinde - [https://kinde.com]
 
-* Captcha for Public Form API's [https://www.google.com/recaptcha/about/]
+* NeonDB - [https://neon.tech]
+
+* Prisma - [https://www.prisma.io]
