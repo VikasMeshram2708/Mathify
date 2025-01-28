@@ -29,7 +29,7 @@ export default function ContactCard() {
   };
 
   return (
-    <Card className="max-w-xl mx-auto shadow-lg">
+    <Card className="max-w-5xl mx-auto shadow-lg">
       {state && state?.error && (
         <Alert
           variant={"destructive"}
