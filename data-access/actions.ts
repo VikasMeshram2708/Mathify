@@ -8,16 +8,12 @@ import { revalidatePath } from "next/cache";
 export async function actContact(prevState: unknown, formData: FormData) {
   const recaptchaToken = formData.get("recaptchaToken") as string;
 
-  // console.log('onr', process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY)
-  // console.log('rct', recaptchaToken)
-
   const response = await fetch(
     `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
     { method: "POST" }
   );
 
   const catpchaData = await response.json();
-  console.log("captch=res", catpchaData);
 
   if (!catpchaData.success) {
     return { error: "reCAPTCHA validation failed" };
@@ -29,8 +25,6 @@ export async function actContact(prevState: unknown, formData: FormData) {
     email: formData.get("email") as string,
     message: formData.get("message") as string,
   };
-
-  // console.log("raw", raw);
 
   // Sanity check
   const sanitize = ContactSchema.safeParse(raw);

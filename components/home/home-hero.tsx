@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "../ui/button";
 import { RetroGrid } from "../ui/retro-grid";
 import { TypewriterEffect } from "../ui/typewriter-effect";
+import Link from "next/link";
 
 export default function HomeHero() {
   const words = [
@@ -35,14 +36,7 @@ export default function HomeHero() {
 
         <main className="flex flex-col sm:flex-row justify-center items-center gap-6">
           <Button size="lg" className="px-6 sm:px-8 py-3 sm:py-4 border-2">
-            Get Started
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="px-6 sm:px-8 py-3 sm:py-4 border-2"
-          >
-            See Demo
+            <Link href="/chat">Get Started</Link>
           </Button>
         </main>
       </div>

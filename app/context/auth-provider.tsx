@@ -10,8 +10,6 @@ if (!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY) {
   throw new Error("Google recaptcha site key not found");
 }
 
-// console.log('onr', process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY)
-
 export default function AuthProvider({
   children,
 }: {
