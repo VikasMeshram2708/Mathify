@@ -7,6 +7,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import React from "react";
+import ContactCard from "./contact-card";
 
 export const metadata: Metadata = {
   title: "Contact Mathify - Get in Touch with Your AI Math Assistant",
@@ -20,18 +21,23 @@ export const metadata: Metadata = {
 const ContactPage: NextPage = () => {
   return (
     <div className="w-full min-h-screen">
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/contact">Contact</BreadcrumbLink>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-      <h1>Contact Page</h1>
+      <div className="container mx-auto max-w-screen-xl px-6 py-4">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/contact">Contact</BreadcrumbLink>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
+        <div className="mt-10">
+          <ContactCard />
+        </div>
+      </div>
     </div>
   );
 };
