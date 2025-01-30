@@ -23,7 +23,7 @@ export const POST = async (request: NextRequest) => {
     console.log('que', question);
 
     const response = await client.chat.completions.create({
-      model: "nvidia/llama-3.1-nemotron-70b-instruct",
+      model: "meta/llama-3.3-70b-instruct",
       messages: [
         { role: "system", content: mathifyContent },
         { role: "user", content: question }, // Fixed to use actual question
